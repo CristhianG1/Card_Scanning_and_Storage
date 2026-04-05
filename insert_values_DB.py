@@ -3,7 +3,7 @@ from datetime import datetime
 import sqlite3
 import time
 
-conn = sqlite3.connect("BD_sqlite/students.db")
+conn = sqlite3.connect("BD_sqlite/students.db", check_same_thread=False)
 conn.execute("PRAGMA foreign_keys = ON")
 cursor = conn.cursor()
 
@@ -14,8 +14,7 @@ def carnet_code(codigo):
     )
     resultado = cursor.fetchone()
     if resultado == None:
-        print("No se ha encontrado el Carnet Universitario solicitado")
-        return
+        return "No se ha encontrado el Carnet Universitario solicitado"
     else:
         cursor.execute("SELECT * FROM logs_students WHERE codigo_estudiante = ? AND hora_salida IS NULL"
         ,(resultado[0],))
@@ -29,13 +28,14 @@ def carnet_code(codigo):
                 (resultado[0], resultado[0], "Carnet universitario", resultado[3], resultado[4], resultado[5], datetime.now().isoformat(), "Registrado", "Offline")
             )
             conn.commit()
+            return "Entrada registrada"
         else:
             cursor.execute("""
                 UPDATE logs_students SET hora_salida = ? WHERE codigo_estudiante = ? AND hora_salida IS NULL""",
                 (datetime.now().isoformat(), resultado[0])
             )
             conn.commit()
-            print("Se ha registrado la salida")
+            return "Se ha registrado la salida"
 
 #INSERTAR LOGS CON DNI
 def dni_code(codigo):
@@ -44,8 +44,7 @@ def dni_code(codigo):
     )
     resultado = cursor.fetchone()
     if resultado == None:
-        print("No se ha encontrado el DNI solicitado")
-        return
+        return "No se ha encontrado el DNI solicitado"
     else:
         cursor.execute("SELECT * FROM logs_students WHERE codigo_estudiante = ? AND hora_salida IS NULL"
         ,(resultado[0],))
@@ -59,13 +58,14 @@ def dni_code(codigo):
                 (resultado[0], resultado[1], "DNI", resultado[3], resultado[4], resultado[5], datetime.now().isoformat(), "Registrado", "Offline")
             )
             conn.commit()
+            return "Entrada registrada"
         else:
             cursor.execute("""
                 UPDATE logs_students SET hora_salida = ? WHERE codigo_estudiante = ? AND hora_salida IS NULL""",
                 (datetime.now().isoformat(), resultado[0])
             )
             conn.commit()
-            print("Se ha registrado la salida")
+            return "Se ha registrado la salida"
 
 #INSERTAR LOGS CON CARNET BIBLIOTECA
 def biblioteca_code(codigo):
@@ -74,8 +74,7 @@ def biblioteca_code(codigo):
     )
     resultado = cursor.fetchone()
     if resultado == None:
-        print("No se ha encontrado el Codigo de Biblioteca solicitado")
-        return
+        return "No se ha encontrado el Codigo de Biblioteca solicitado"
     else:
         cursor.execute("SELECT * FROM logs_students WHERE codigo_estudiante = ? AND hora_salida IS NULL"
         ,(resultado[0],))
@@ -89,13 +88,14 @@ def biblioteca_code(codigo):
                 (resultado[0], resultado[2], "Carnet Biblioteca", resultado[3], resultado[4], resultado[5], datetime.now().isoformat(), "Registrado", "Offline")
             )
             conn.commit()
+            return "Entrada registrada"
         else:
             cursor.execute("""
                 UPDATE logs_students SET hora_salida = ? WHERE codigo_estudiante = ? AND hora_salida IS NULL""",
                 (datetime.now().isoformat(), resultado[0])
             )
             conn.commit()
-            print("Se ha registrado la salida")
+            return "Se ha registrado la salida"
 
 
         
