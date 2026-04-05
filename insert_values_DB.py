@@ -24,9 +24,9 @@ def carnet_code(codigo):
         if busqueda is None:
             cursor.execute("""
                 INSERT INTO logs_students 
-                (codigo_estudiante, tipeIdentification, nombre, apellido, carrera, hora_entrada)
-                VALUES (?, ?, ?, ?, ?, ?)""",
-                (resultado[0], "Carnet universitario", resultado[3], resultado[4], resultado[5], datetime.now().isoformat())
+                (codigo_estudiante, codigo_ingreso, tipeIdentification, nombre, apellido, carrera, hora_entrada, estado, conexion)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (resultado[0], resultado[0], "Carnet universitario", resultado[3], resultado[4], resultado[5], datetime.now().isoformat(), "Registrado", "Offline")
             )
             conn.commit()
         else:
@@ -54,9 +54,9 @@ def dni_code(codigo):
         if busqueda is None:
             cursor.execute("""
                 INSERT INTO logs_students 
-                (codigo_estudiante, tipeIdentification, nombre, apellido, carrera, hora_entrada)
-                VALUES (?, ?, ?, ?, ?, ?)""",
-                (resultado[0], "DNI", resultado[3], resultado[4], resultado[5], datetime.now().isoformat())
+                (codigo_estudiante, codigo_ingreso, tipeIdentification, nombre, apellido, carrera, hora_entrada, estado, conexion)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (resultado[0], resultado[1], "DNI", resultado[3], resultado[4], resultado[5], datetime.now().isoformat(), "Registrado", "Offline")
             )
             conn.commit()
         else:
@@ -84,9 +84,9 @@ def biblioteca_code(codigo):
         if busqueda is None:
             cursor.execute("""
                 INSERT INTO logs_students 
-                (codigo_estudiante, tipeIdentification, nombre, apellido, carrera, hora_entrada)
-                VALUES (?, ?, ?, ?, ?, ?)""",
-                (resultado[0], "Carnet Biblioteca", resultado[3], resultado[4], resultado[5], datetime.now().isoformat())
+                (codigo_estudiante, codigo_ingreso, tipeIdentification, nombre, apellido, carrera, hora_entrada, estado, conexion)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (resultado[0], resultado[2], "Carnet Biblioteca", resultado[3], resultado[4], resultado[5], datetime.now().isoformat(), "Registrado", "Offline")
             )
             conn.commit()
         else:

@@ -28,8 +28,11 @@ while True:
             except Exception as error:
                 print(error)    
         case _ if busqueda[0] in ("0","6","7"):
-            print("Tipo de identificación: 72032340")
-            insert_values_DB.dni_code(busqueda)
+            try:
+                print("Tipo de identificación: 72032340")
+                insert_values_DB.dni_code(busqueda)
+            except Exception as error:
+                print(error)
         case _:
             print("Error, codigo no reconocido")
 conn.close()

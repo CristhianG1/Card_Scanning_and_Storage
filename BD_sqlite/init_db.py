@@ -20,13 +20,14 @@ def init_db():
     CREATE TABLE IF NOT EXISTS logs_students (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         codigo_estudiante TEXT NOT NULL,
+        codigo_ingreso TEXT NOT NULL,
         nombre TEXT NOT NULL,
         apellido TEXT NOT NULL,
-        tipeIdentification,
-        carrera TEXT,
-        estado TEXT,
+        tipeIdentification TEXT NOT NULL,
+        carrera TEXT NOT NULL,
+        estado TEXT NOT NULL,
         pc_actual TEXT,
-        conexion TEXT,
+        conexion TEXT NOT NULL,
         hora_entrada TEXT NOT NULL,
         hora_salida TEXT,     
         FOREIGN KEY (codigo_estudiante) REFERENCES students(codigo)
