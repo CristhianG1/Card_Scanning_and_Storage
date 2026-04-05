@@ -29,7 +29,7 @@ while True:
                 print(error)    
         case _ if busqueda[0] in ("0","6","7"):
             try:
-                print("Tipo de identificación: 72032340")
+                print("Tipo de identificación: DNI")
                 insert_values_DB.dni_code(busqueda)
             except Exception as error:
                 print(error)

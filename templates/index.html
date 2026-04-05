@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de Control - Laboratorio 6</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Registro de Estudiantes en el laboratorio</h1>
+    <table>
+        <tr>
+            <th>Código de Ingreso</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Conexión</th>
+            <th>Laptop</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            
+        </tr>
+        {% for fila in registros %}
+        <tr>
+            <td>{{ fila['codigo_ingreso'] }}</td>
+            <td>{{ fila['nombre'] }} {{ fila['apellido'] }}</td>
+            <td>{{ fila['estado'] }}</td>
+            <td>{{ fila['conexion'] }}</td>
+            <td>{{ fila['pc_actual'] }}</td>
+            <td>{{ fila['hora_entrada'] }}</td>
+            <td>{{ fila['hora_salida'] if fila['hora_salida'] else 'En sitio' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
