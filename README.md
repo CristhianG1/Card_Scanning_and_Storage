@@ -1,1 +1,1 @@
-Python 3.13 requerido
+Python 3.13.12 requerido
