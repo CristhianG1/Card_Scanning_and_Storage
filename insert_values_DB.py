@@ -30,6 +30,8 @@ def carnet_code(codigo):
             conn.commit()
             return "Entrada registrada"
         else:
+            if busqueda[5] != "Carnet universitario": 
+                return f"Primero debe marcar su salida con su {busqueda[5]}"
             cursor.execute("""
                 UPDATE logs_students SET hora_salida = ? WHERE codigo_estudiante = ? AND hora_salida IS NULL""",
                 (datetime.now().isoformat(), resultado[0])
@@ -60,6 +62,8 @@ def dni_code(codigo):
             conn.commit()
             return "Entrada registrada"
         else:
+            if busqueda[5] != "DNI": 
+                return f"Primero debe marcar su salida con su {busqueda[5]}"
             cursor.execute("""
                 UPDATE logs_students SET hora_salida = ? WHERE codigo_estudiante = ? AND hora_salida IS NULL""",
                 (datetime.now().isoformat(), resultado[0])
@@ -90,6 +94,8 @@ def biblioteca_code(codigo):
             conn.commit()
             return "Entrada registrada"
         else:
+            if busqueda[5] != "Carnet Biblioteca": 
+                return f"Primero debe marcar su salida con su {busqueda[5]}"
             cursor.execute("""
                 UPDATE logs_students SET hora_salida = ? WHERE codigo_estudiante = ? AND hora_salida IS NULL""",
                 (datetime.now().isoformat(), resultado[0])
