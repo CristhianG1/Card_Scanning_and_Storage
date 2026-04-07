@@ -7,17 +7,35 @@
 </head>
 <body>
     <div class="wrapper">
-    <img src="capibara.png" alt="capibara" class="capibara">
+    <img src="capibara.png" alt="capibara" class="capibara capibara-derecha">
     
-    <div class="contenedor">
+    <div class="contenedor">    
         <img src="logo.png" alt="Logo UNMSM" class="logo">
         <h1>Scanner de Carnets</h1>
-        <input type="text" id="codigoInput" placeholder="Esperando código...">
+        <input type="text" id="codigoInput" placeholder="Esperando código..." autocomplete="off">
         <p id="respuesta"></p>
+        <a href="/admin.html" class="btn-admin">Administrador</a>
+        <button id="btnLogs" onclick="toggleLogs()">Ver Logs de Hoy</button>
+        <div id="seccionLogs"> <table id="tablaLogs">
+            <table id="tablaLogs">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Carrera</th>
+                        <th>Hora Entrada</th>
+                        <th>Hora Salida</th>
+                        <th>Estado</th>
+                        <th>Conexión</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla"></tbody>
+            </table>
+        </div>
     </div>
-
-    <img src="capibara.png" class="capibara capibara-derecha">
+    <img src="capibara.png" class="capibara">
 </div>
 <script src="script.js"></script>
 </body>
-</html>
+</html> 

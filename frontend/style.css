@@ -23,7 +23,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    width: 400px;
+    min-width: 400px; /* Cambiado de width a min-width */
+    max-width: 90vw;  /* Para que no se salga de la pantalla */
 }
 
 img {
@@ -56,8 +57,97 @@ input {
     width: 150px;
     border-radius: 20px;
     opacity: 0.85;
+        
 }
 
 .capibara-derecha {
     transform: scaleX(-1);
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0f3460;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+a:hover {
+    background-color: #1a4a80;
+}   
+
+.btn-admin {
+    background-color: #1a6b3a;
+}
+
+.btn-admin:hover {
+    background-color: #227a44;
+}
+
+/* Estilo para el botón de Logs (similar a tus otros botones) */
+#btnLogs {
+    color: #ffffff;
+    background-color: #0f3460;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#btnLogs:hover {
+    background-color: #1a4a80;
+}
+
+/* Contenedor de la tabla */
+#seccionLogs {
+    width: 100%;
+    margin-top: 15px;
+    overflow: hidden; /* Importante: oculta lo que sobresale al contraer */
+    
+    /* Estado inicial: Cerrado */
+    max-height: 0; 
+    opacity: 0;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease;
+}
+
+/* Esta clase la activaremos con JavaScript para abrir la tabla */
+#seccionLogs.abierto {
+    max-height: 600px; /* Un valor lo suficientemente alto para que quepa la tabla */
+    opacity: 1;
+    overflow-y: auto; /* Permite scroll si hay demasiados datos */
+}
+
+/* Estilo para que la tabla se vea bien dentro */
+#tablaLogs {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0f3460;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th {
+    background-color: #0f3460;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #444;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    color: #cbd5e0;
+}
+
+tr:hover {
+    background-color: #16213e; /* Efecto hover en las filas */
 }
